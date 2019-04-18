@@ -2,6 +2,7 @@
     "name": "rajtika/firebase",
     "description": "This package will send Firebase push notification to android and ios",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Md Jewel Rana",

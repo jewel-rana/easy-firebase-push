@@ -76,10 +76,14 @@ class FirebaseController extends Controller
         return [
             'to' => $this->toOne,
             'data' => [
-                'title' => $this->title,
-                'body' => $this->body
+                'data' => [
+                    'title' => $this->title,
+                    'body' => $this->body
+                ]
             ]
         ];
+
+        // return json_encode($data);
     }
 
     public function toOne( $id )
