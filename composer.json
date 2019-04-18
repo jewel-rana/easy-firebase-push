@@ -10,5 +10,18 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Rajtika\\Firebase\\": "src"
+        },
+        "files": [
+            "src/config.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rajtika\\Firebase\\Test\\": "tests"
+        }
+    }
 }
