@@ -1,0 +1,13 @@
+{
+    "name": "rajtika/firebase",
+    "description": "This package will send Firebase push notification to android and ios",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Md Jewel Rana",
+            "email": "jewelrana.dev@gmail.com"
+        }
+    ],,
+    "minimum-stability": "dev",
+    "require": {}
+}
