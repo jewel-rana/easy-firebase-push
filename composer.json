@@ -10,13 +10,15 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php" : ">=5.6",
+    },
     "autoload": {
         "psr-4": {
             "Rajtika\\Firebase\\": "src"
         },
         "files": [
-            "src/config.php"
+            "src/FirebaseServiceProvider.php"
         ]
     },
     "autoload-dev": {

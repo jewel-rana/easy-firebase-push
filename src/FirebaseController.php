@@ -13,6 +13,7 @@ class FirebaseController extends Controller
     public $notification_key;
     public $API_KEY;
     public $ID;
+    public $issue_id;
     public $title;
     public $body;
     public $moredata;
@@ -46,7 +47,13 @@ class FirebaseController extends Controller
     //set the ID
     public function setID( $notification_id = '' )
     {
-        $this->id = $notification_id;
+        $this->ID = $notification_id;
+    }
+
+    //set the Issue ID
+    public function setIssueID( $issue_id = '' )
+    {
+        $this->issue_id = $issue_id;
     }
 
     //set the title
@@ -77,6 +84,8 @@ class FirebaseController extends Controller
             'to' => $this->toOne,
             'data' => [
                 'data' => [
+                    'id' => $this->notification_id,
+                    'issue_id' => $this->ID,
                     'title' => $this->title,
                     'body' => $this->body
                 ]
@@ -101,6 +110,7 @@ class FirebaseController extends Controller
         return [
             'to' => $this->toMany,
             'notification' => [
+                'id' => $this->ID,
                 'title' => $this->title,
                 'body' => $this->body
             ]
