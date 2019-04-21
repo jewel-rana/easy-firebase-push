@@ -84,8 +84,8 @@ class FirebaseController extends Controller
             'to' => $this->toOne,
             'data' => [
                 'data' => [
-                    'id' => $this->notification_id,
-                    'issue_id' => $this->ID,
+                    'id' => $this->ID,
+                    'issue_id' => $this->issue_id,
                     'title' => $this->title,
                     'body' => $this->body
                 ]
