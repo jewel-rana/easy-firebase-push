@@ -23,7 +23,6 @@ class FirebaseController extends Controller
     public $toMany;
     public $headers;
     public $topic;
-    public $type;
 
     public function __construct()
     {
