@@ -23,6 +23,7 @@ class FirebaseController extends Controller
     public $toMany;
     public $headers;
     public $topic;
+    public $type;
 
     public function __construct()
     {
@@ -37,6 +38,7 @@ class FirebaseController extends Controller
         );
 
         $this->sound = true;
+        $this->type = 'notification';
     }
 
     public function sound( $sound = true )
@@ -87,7 +89,8 @@ class FirebaseController extends Controller
                     'id' => $this->ID,
                     'issue_id' => $this->issue_id,
                     'title' => $this->title,
-                    'body' => $this->body
+                    'body' => $this->body,
+                    'actionType' => $this->type
                 ]
             ]
         ];
