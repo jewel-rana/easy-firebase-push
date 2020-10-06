@@ -122,7 +122,7 @@ class FirebaseController extends Controller
     public function getTopic()
     {
         return [
-            'to' => '/topic/' . $this->topic,
+            'to' => '/topics/' . $this->topic,
             'notification' => [
                 'id' => $this->ID,
                 'title' => $this->title,
