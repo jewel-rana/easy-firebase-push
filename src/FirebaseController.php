@@ -2,11 +2,7 @@
 
 namespace Rajtika\Firebase;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-class FirebaseController extends Controller
+class FirebaseController
 {
     public $fcp;
     public $batchApiUrl;
@@ -227,7 +223,7 @@ class FirebaseController extends Controller
 
     private function _curl()
     {
-        
+
     }
 
     public function batchAdd( $regIds )

@@ -3,6 +3,7 @@
 namespace Rajtika\Firebase;
 
 use Illuminate\Support\ServiceProvider;
+use Rajtika\Firebase\Services\Firebase;
 
 class FirebaseServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,10 @@ class FirebaseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        include __DIR__.'/routes.php';
+        $this->publishes([
+            __DIR__.'/config/firebase.php' =>  config_path('firebase.php'),
+        ], 'config');
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
     }
 
     /**
@@ -23,6 +27,8 @@ class FirebaseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Rajtika\Firebase\FirebaseController');
+        $this->app->bind('firebase', function () {
+            return new Firebase();
+        });
     }
 }
