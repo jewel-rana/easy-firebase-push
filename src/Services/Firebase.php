@@ -118,6 +118,11 @@ class Firebase
         ];
     }
 
+    public static function setNotificationKey($batchID)
+    {
+        self::$batchID = $batchID;
+    }
+
     public static function generateKey($ID, $length = 30)
     {
         $len = strlen(( string )$ID);
