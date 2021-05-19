@@ -74,6 +74,13 @@ class Firebase
     }
 
     //set notification body
+    public static function setImage($image = '')
+    {
+        self::$params['image'] = $image;
+        return new static;
+    }
+
+    //set notification body
     public static function setData(array $data)
     {
         self::$params = $data;
@@ -101,6 +108,7 @@ class Firebase
                 'id' => self::$params['ID'],
                 'title' => self::$params['title'],
                 'body' => self::$params['body'],
+                'image' => self::$params['image'],
                 'type' => self::$type
             ]
         ];
