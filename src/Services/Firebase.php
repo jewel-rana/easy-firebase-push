@@ -16,6 +16,7 @@ class Firebase
     protected static $config;
     protected static $params;
     protected static $batchID;
+    protected static $payload;
 
     public function __construct()
     {
@@ -24,16 +25,18 @@ class Firebase
 
     private static function init()
     {
-        self::$config = Config::get('firebase');
+        self::$config = config()->get('firebase');
         self::$batchUrl = self::$config['batch_url'];
         self::$fcmUrl = self::$config['fcm_url'];
         self::$API_KEY = self::$config['api_key'];
         self::$sound = true;
         self::$type = 'notification';
+        self::$payload = 'notification';
     }
 
     private static function getHeader()
     {
+//        dd(self::$API_KEY);
         return [
             'Authorization: key=' . self::$API_KEY,
             'Content-Type: application/json'
@@ -73,8 +76,7 @@ class Firebase
         return new static;
     }
 
-    //set notification body
-    public static function setImage($image = '')
+    public static function setImage($image = null)
     {
         self::$params['image'] = $image;
         return new static;
@@ -93,6 +95,13 @@ class Firebase
         return new static;
     }
 
+    public static function setPayload($payload = 'notification')
+    {
+        self::$payload = $payload;
+        dd(self::$payload);
+        return new static;
+    }
+
     public static function setTopic($topic)
     {
         self::$topic = $topic;
@@ -104,11 +113,11 @@ class Firebase
     {
         return [
             'to' => self::$ids,
-            'notification' => [
+            self::$payload => [
                 'id' => self::$params['ID'],
                 'title' => self::$params['title'],
                 'body' => self::$params['body'],
-                'image' => self::$params['image'],
+                'image' => self::$params['image'] ?? null,
                 'type' => self::$type
             ]
         ];
@@ -172,8 +181,9 @@ class Firebase
         return true;
     }
 
-    public static function send()
+    public static function send($payload = 'notification')
     {
+        self::$payload = $payload;
         if(self::validate() && self::$ids) {
             // Open connection
             $ch = curl_init();
